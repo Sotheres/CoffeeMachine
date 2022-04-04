@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:14.2
+    container_name: cm-postgres
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_DB=cm
+      - POSTGRES_USER=postgresql
+      - POSTGRES_PASSWORD=postgresql
+#volumes:
+#  cm-postgres-data:
+# TODO: check volume mapping
