@@ -7,6 +7,7 @@ import com.chertov.coffeemachine.validator.CoffeeValidator;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
+import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,13 +41,19 @@ public class CoffeeMachineController {
 
     @Operation(summary = "Fill the machine with specified number of portions of coffee")
     @PostMapping("/service/fillMachine")
-    public void addPortions(@RequestBody int numOfPortions) {
+    public void fillMachine(@RequestBody int numOfPortions) {
         coffeeMachineService.fillMachine(numOfPortions);
     }
 
     @Operation(summary = "Get number of portions left")
-    @GetMapping("/service/portionsLeft")
-    public int portionsLeft() {
-        return coffeeMachineService.portionsLeft();
+    @GetMapping("/service/getPortionsLeft")
+    public int getPortionsLeft() {
+        return coffeeMachineService.getPortionsLeft();
+    }
+
+    @Operation(summary = "Get number of coffees made by type sorted by amount desc")
+    @GetMapping("/statistics")
+    public Map<CoffeeType, Long> getCoffeeStatistic() {
+        return coffeeMachineService.getCoffeeStatisticsByTypeSortedByAmount();
     }
 }
