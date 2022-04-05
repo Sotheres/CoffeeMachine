@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS PortionsLeft (
+CREATE TABLE IF NOT EXISTS CoffeeMachine (
     id                 SERIAL PRIMARY KEY,
     number_of_portions int NOT NULL
 );

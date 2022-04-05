@@ -24,6 +24,15 @@ public class Coffee {
     @Column(name = "time_of_brewing")
     private Instant timeOfBrewing;
 
+    public Coffee() {
+    }
+
+    public Coffee(Long id, CoffeeType type, Instant timeOfBrewing) {
+        this.id = id;
+        this.type = type;
+        this.timeOfBrewing = timeOfBrewing;
+    }
+
     public Long getId() {
         return id;
     }
