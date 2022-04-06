@@ -28,7 +28,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Testcontainers
-class CoffeeControllerIT {
+class CoffeeMachineControllerIT {
 
     private static final String MAKE_COFFEE = "/coffee";
     private static final String PORTIONS_LEFT = "/service/getPortionsLeft";

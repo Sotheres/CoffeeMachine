@@ -1,20 +1,20 @@
 package com.chertov.coffeemachine.validator;
 
 import com.chertov.coffeemachine.exception.OutOfCoffeeException;
-import com.chertov.coffeemachine.repository.CoffeeMachineRepository;
+import com.chertov.coffeemachine.service.CoffeeMachineService;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CoffeeValidator {
 
-    private final CoffeeMachineRepository coffeeMachineRepository;
+    private final CoffeeMachineService coffeeMachineService;
 
-    public CoffeeValidator(CoffeeMachineRepository coffeeMachineRepository) {
-        this.coffeeMachineRepository = coffeeMachineRepository;
+    public CoffeeValidator(CoffeeMachineService coffeeMachineService) {
+        this.coffeeMachineService = coffeeMachineService;
     }
 
     public void validate() {
-        int portionsLeft = coffeeMachineRepository.getPortionsLeft(1L);
+        int portionsLeft = coffeeMachineService.getPortionsLeft();
         if (portionsLeft == 0) {
             throw new OutOfCoffeeException("Run out of coffee! Please, fill the machine.");
         }

@@ -31,7 +31,7 @@ public class CoffeeMachineService {
         this.coffeeMapper = coffeeMapper;
     }
 
-    @CacheEvict(value = "portionsLeft")
+    @CacheEvict(value = "portionsLeft", allEntries = true)
     @Transactional
     public CoffeeDto makeCoffee(CoffeeDto coffeeDto) {
         Coffee coffee = coffeeMapper.convert(coffeeDto);
@@ -42,7 +42,7 @@ public class CoffeeMachineService {
         return coffeeMapper.convert(persistedCoffee);
     }
 
-    @CacheEvict(value = "portionsLeft")
+    @CacheEvict(value = "portionsLeft", allEntries = true)
     public void fillMachine(int numOfPortions) {
         coffeeMachineRepository.fillMachineById(numOfPortions, 1L);
     }
