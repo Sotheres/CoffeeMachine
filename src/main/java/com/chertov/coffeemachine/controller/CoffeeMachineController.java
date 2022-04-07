@@ -42,8 +42,8 @@ public class CoffeeMachineController {
 
     @Operation(summary = "Fill the machine with specified number of portions of coffee")
     @PostMapping("/service/fillMachine")
-    public void fillMachine(@RequestParam int numOfPortions) {
-        coffeeMachineService.fillMachine(numOfPortions);
+    public int fillMachine(@RequestParam int numOfPortions) {
+        return coffeeMachineService.fillMachine(numOfPortions);
     }
 
     @Operation(summary = "Get number of portions left")

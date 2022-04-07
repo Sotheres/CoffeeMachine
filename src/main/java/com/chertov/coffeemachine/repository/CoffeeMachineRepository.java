@@ -14,12 +14,11 @@ public interface CoffeeMachineRepository extends JpaRepository<CoffeeMachine, Lo
            nativeQuery = true)
     int getPortionsLeft(long id);
 
-    @Modifying
-    @Transactional
     @Query(value = "UPDATE CoffeeMachine SET number_of_portions = " +
                    "number_of_portions + :numOfPortions " +
-                   "WHERE id = :id", nativeQuery = true)
-    void fillMachineById(int numOfPortions, long id);
+                   "WHERE id = :id " +
+                   "RETURNING number_of_portions", nativeQuery = true)
+    int fillMachineById(int numOfPortions, long id);
 
     @Modifying
     @Transactional

@@ -43,8 +43,8 @@ public class CoffeeMachineService {
     }
 
     @CacheEvict(value = "portionsLeft", allEntries = true)
-    public void fillMachine(int numOfPortions) {
-        coffeeMachineRepository.fillMachineById(numOfPortions, 1L);
+    public int fillMachine(int numOfPortions) {
+        return coffeeMachineRepository.fillMachineById(numOfPortions, 1L);
     }
 
     @Cacheable("portionsLeft")
