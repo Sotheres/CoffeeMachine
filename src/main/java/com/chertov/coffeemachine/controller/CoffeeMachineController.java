@@ -11,6 +11,7 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -41,7 +42,7 @@ public class CoffeeMachineController {
 
     @Operation(summary = "Fill the machine with specified number of portions of coffee")
     @PostMapping("/service/fillMachine")
-    public void fillMachine(@RequestBody int numOfPortions) {
+    public void fillMachine(@RequestParam int numOfPortions) {
         coffeeMachineService.fillMachine(numOfPortions);
     }
 
