@@ -114,8 +114,7 @@ class CoffeeMachineControllerIT {
     @Test
     void fillMachine_portionsAreAdded() throws Exception {
         mockMvc.perform(post(FILL_MACHINE)
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .content(mapper.writeValueAsString(2)))
+                            .param("numOfPortions", "2"))
                .andExpect(status().isOk());
 
         int portionsLeft = coffeeMachineRepository.getPortionsLeft(1L);
