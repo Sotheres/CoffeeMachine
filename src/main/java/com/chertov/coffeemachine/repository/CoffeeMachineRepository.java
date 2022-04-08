@@ -1,6 +1,7 @@
 package com.chertov.coffeemachine.repository;
 
 import com.chertov.coffeemachine.entity.CoffeeMachine;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -29,6 +30,7 @@ public interface CoffeeMachineRepository extends JpaRepository<CoffeeMachine, Lo
 
     @Modifying
     @Transactional
+    @CacheEvict(value = "portionsLeft", allEntries = true)
     @Query(value = "UPDATE CoffeeMachine SET number_of_portions = :portions " +
                    "WHERE id = :id", nativeQuery = true)
     void setPortionsLeftById(int portions, long id);
